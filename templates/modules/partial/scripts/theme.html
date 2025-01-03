@@ -45,9 +45,9 @@
         window.localStorage.setItem('Stellar.theme', newTheme)
 
         const messages = {
-            light: [[#{message.theme_switched.light}]],
-            dark: [[#{message.theme_switched.dark}]],
-            auto: [[#{message.theme_switched.auto}]],
+            light: "#{message.theme_switched.light}",
+            dark: "#{message.theme_switched.dark}",
+            auto: "#{message.theme_switched.auto}",
         }
         hud?.toast?.(messages[newTheme])
     }
