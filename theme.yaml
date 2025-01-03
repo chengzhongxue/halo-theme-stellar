@@ -2,10 +2,6 @@ apiVersion: theme.halo.run/v1alpha1
 kind: Theme
 metadata:
   name: theme-stellar
-  annotations:
-    # Add supports for Halo App Store
-    # https://www.halo.run/store/apps/app-KxJeQ
-    "store.halo.run/app-id": "app-KxJeQ"
 spec:
   customTemplates:
     page:
@@ -34,4 +30,3 @@ spec:
   license:
     - name: "MIT license"
       url: "https://github.com/chengzhongxue/halo-theme-stellar/blob/main/LICENSE"
-  
