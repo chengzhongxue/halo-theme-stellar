@@ -1572,6 +1572,10 @@ spec:
     - group: footer
       label: 页脚
       formSchema:
+        - $formkit: checkbox
+          name: allow_switch_theme
+          label: 是否显示切换主题的按钮
+          value: false
         - $formkit: repeater
           name: social
           label: 社交媒体
