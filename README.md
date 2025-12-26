@@ -51,8 +51,11 @@ Stellar 主题支持以下 Halo 插件：
 
 如果你对主题有什么建议或者意见，欢迎提 PR & issue。
 
-添加微信，进群 （备注什么主题）
-<img width="360" src="https://api.minio.yyds.pink/halo-docs/2024/11/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20241109212103.jpg" />
+* 添加企业微信 （备注进群）
+<img width="360" src="https://api.minio.yyds.pink/kunkunyu/files/2025/02/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250212142105-pbceif.jpg" />
+
+* QQ群
+<img width="360" src="https://api.minio.yyds.pink/kunkunyu/files/2025/05/qq-708998089-iqowsh.webp" />
 
 
 ### 赞助
