@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+    th:replace="~{modules/layout :: html(head = null,content = ~{::content},_left = ~{::left},_right = ~{::right},page_type = 'content',layout = 'page',_title = ${title},_type = null,_indent = null)}">
+
+<th:block th:fragment="left">
+    <th:block
+        th:replace="~{modules/partial/sidebar/logo :: logo('sidebar',null,${theme.config.logo.avatar},${theme.config.logo.title},${theme.config.logo.subtitle},'/')}">
+    </th:block>
+    <div class="nav-area">
+        <th:block th:replace="~{modules/partial/sidebar/search}"></th:block>
+        <th:block th:replace="~{modules/partial/sidebar/menu :: menu('sidebar')}"></th:block>
+    </div>
+    <div th:replace="~{modules/partial/sidebar/widgets :: widgets(${theme.config.site_tree.index.leftbar})}"></div>
+    <th:block th:replace="~{modules/partial/sidebar/footer}"></th:block>
+</th:block>
+<th:block th:fragment="right">
+    <div th:replace="~{modules/partial/sidebar/widgets :: widgets(${theme.config.site_tree.index.rightbar})}"></div>
+</th:block>
+
+<th:block th:fragment="content">
+    <th:block th:replace="~{plugin:plugin-douban:modules/style}"></th:block>
+    <th:block th:replace="~{modules/partial/main/navbar/link_article_banner}" />
+    <article class="md-text content">
+        <th:block th:replace="~{plugin:plugin-douban:modules/douban}"></th:block>
+    </article>
+
+    <th:block th:replace="~{plugin:plugin-douban:modules/script}"></th:block>
+</th:block>
+
+</html>

@@ -30,10 +30,17 @@ spec:
           name: columns
           label: 一行多少个
           value: 4
-        - $formkit: repeater
+        - $formkit: array
           name: items
           label: 菜单
           min: 1
+          itemLabels:
+            - type: iconify
+              label: $value.icon
+            - type: text
+              label: $value.title
+            - type: text
+              label: $value.url
           value: 
             - theme: "#1BCDFC"
               icon: <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg>
@@ -56,10 +63,10 @@ spec:
               name: theme
               label: 高亮时的颜色
               help: 仅 svg 中 fill="currentColor" 时有效
-            - $formkit: textarea
+            - $formkit: iconify
               name: icon
-              label: 图标  
-              help: 支持 svg/img 标签
+              label: 图标
+              format: svg # svg / dataurl / url / name
             - $formkit: text
               name: title
               label: 标题
@@ -87,10 +94,13 @@ spec:
               - title: "归档"
                 url: "/archives"
           children:
-            - $formkit: repeater
+            - $formkit: array
               name: leftbar
               id: leftbar
               label: 左侧栏
+              itemLabels:
+                - type: text
+                  label: $value.widget
               children:
                 - $formkit: select
                   name: widget
@@ -138,14 +148,21 @@ spec:
                       value: 1
                       label: 链接列表-每行几个按钮
                       help: 为1显示为列表，2是每两个按钮放一行
-                    - $formkit: repeater
+                    - $formkit: array
                       name: items
                       label: 链接列表
+                      itemLabels:
+                        - type: iconify
+                          label: $value.icon
+                        - type: text
+                          label: $value.title
+                        - type: text
+                          label: $value.url
                       children:
-                        - $formkit: textarea
+                        - $formkit: iconify
                           name: icon
-                          label: 图标  
-                          help: 支持 svg/img 标签
+                          label: 图标
+                          format: svg # svg / dataurl / url / name
                           validation: required
                         - $formkit: text
                           name: title
@@ -155,10 +172,13 @@ spec:
                           name: url
                           label: 链接
                           validation: required
-            - $formkit: repeater
+            - $formkit: array
               name: rightbar
               id: rightbar
               label: 右侧栏
+              itemLabels:
+                - type: text
+                  label: $value.widget
               children:
                 - $formkit: select
                   name: widget
@@ -206,14 +226,21 @@ spec:
                       value: 1
                       label: 链接列表-每行几个按钮
                       help: 为1显示为列表，2是每两个按钮放一行
-                    - $formkit: repeater
+                    - $formkit: array
                       name: items
                       label: 链接列表
+                      itemLabels:
+                        - type: iconify
+                          label: $value.icon
+                        - type: text
+                          label: $value.title
+                        - type: text
+                          label: $value.url
                       children:
-                        - $formkit: textarea
+                        - $formkit: iconify
                           name: icon
-                          label: 图标  
-                          help: 支持 svg/img 标签
+                          label: 图标
+                          format: svg # svg / dataurl / url / name
                           validation: required
                         - $formkit: text
                           name: title
@@ -223,10 +250,15 @@ spec:
                           name: url
                           label: 链接
                           validation: required
-            - $formkit: repeater
+            - $formkit: array
               name: nav_tabs
               label: 菜单
               min: 1
+              itemLabels:
+                - type: text
+                  label: $value.title
+                - type: text
+                  label: $value.url
               children:
                 - $formkit: text
                   name: title
@@ -242,10 +274,13 @@ spec:
               - widget: recent_post
             rightbar: []
           children:
-            - $formkit: repeater
+            - $formkit: array
               name: leftbar
               id: leftbar
               label: 左侧栏
+              itemLabels:
+                - type: text
+                  label: $value.widget
               children:
                 - $formkit: select
                   name: widget
@@ -291,14 +326,21 @@ spec:
                       value: 1
                       label: 链接列表-每行几个按钮
                       help: 为1显示为列表，2是每两个按钮放一行
-                    - $formkit: repeater
+                    - $formkit: array
                       name: items
                       label: 链接列表
+                      itemLabels:
+                        - type: iconify
+                          label: $value.icon
+                        - type: text
+                          label: $value.title
+                        - type: text
+                          label: $value.url
                       children:
-                        - $formkit: textarea
+                        - $formkit: iconify
                           name: icon
-                          label: 图标  
-                          help: 支持 svg/img 标签
+                          label: 图标
+                          format: svg # svg / dataurl / url / name
                           validation: required
                         - $formkit: text
                           name: title
@@ -308,10 +350,13 @@ spec:
                           name: url
                           label: 链接
                           validation: required
-            - $formkit: repeater
+            - $formkit: array
               name: rightbar
               id: rightbar
               label: 右侧栏
+              itemLabels:
+                - type: text
+                  label: $value.widget
               children:
                 - $formkit: select
                   name: widget
@@ -355,14 +400,21 @@ spec:
                       value: 1
                       label: 链接列表-每行几个按钮
                       help: 为1显示为列表，2是每两个按钮放一行
-                    - $formkit: repeater
+                    - $formkit: array
                       name: items
                       label: 链接列表
+                      itemLabels:
+                        - type: iconify
+                          label: $value.icon
+                        - type: text
+                          label: $value.title
+                        - type: text
+                          label: $value.url
                       children:
-                        - $formkit: textarea
+                        - $formkit: iconify
                           name: icon
-                          label: 图标  
-                          help: 支持 svg/img 标签
+                          label: 图标
+                          format: svg # svg / dataurl / url / name
                           validation: required
                         - $formkit: text
                           name: title
@@ -390,10 +442,13 @@ spec:
               - title: "文档"
                 url: "/docs"
           children:
-            - $formkit: repeater
+            - $formkit: array
               name: leftbar
               id: leftbar
               label: 左侧栏
+              itemLabels:
+                - type: text
+                  label: $value.widget
               children:
                 - $formkit: select
                   name: widget
@@ -433,14 +488,21 @@ spec:
                       value: 1
                       label: 链接列表-每行几个按钮
                       help: 为1显示为列表，2是每两个按钮放一行
-                    - $formkit: repeater
+                    - $formkit: array
                       name: items
                       label: 链接列表
+                      itemLabels:
+                        - type: iconify
+                          label: $value.icon
+                        - type: text
+                          label: $value.title
+                        - type: text
+                          label: $value.url
                       children:
-                        - $formkit: textarea
+                        - $formkit: iconify
                           name: icon
-                          label: 图标  
-                          help: 支持 svg/img 标签
+                          label: 图标
+                          format: svg # svg / dataurl / url / name
                           validation: required
                         - $formkit: text
                           name: title
@@ -450,10 +512,13 @@ spec:
                           name: url
                           label: 链接
                           validation: required
-            - $formkit: repeater
+            - $formkit: array
               name: rightbar
               id: rightbar
               label: 右侧栏
+              itemLabels:
+                - type: text
+                  label: $value.widget
               children:
                 - $formkit: select
                   name: widget
@@ -499,14 +564,21 @@ spec:
                       value: 1
                       label: 链接列表-每行几个按钮
                       help: 为1显示为列表，2是每两个按钮放一行
-                    - $formkit: repeater
+                    - $formkit: array
                       name: items
                       label: 链接列表
+                      itemLabels:
+                        - type: iconify
+                          label: $value.icon
+                        - type: text
+                          label: $value.title
+                        - type: text
+                          label: $value.url
                       children:
-                        - $formkit: textarea
+                        - $formkit: iconify
                           name: icon
-                          label: 图标  
-                          help: 支持 svg/img 标签
+                          label: 图标
+                          format: svg # svg / dataurl / url / name
                           validation: required
                         - $formkit: text
                           name: title
@@ -516,10 +588,15 @@ spec:
                           name: url
                           label: 链接
                           validation: required
-            - $formkit: repeater
+            - $formkit: array
               name: nav_tabs
               label: 菜单
               min: 1
+              itemLabels:
+                - type: text
+                  label: $value.title
+                - type: text
+                  label: $value.url
               children:
                 - $formkit: text
                   name: title
@@ -537,10 +614,13 @@ spec:
               - widget: ghrepo
               - widget: toc
           children:
-            - $formkit: repeater
+            - $formkit: array
               name: leftbar
               id: leftbar
               label: 左侧栏
+              itemLabels:
+                - type: text
+                  label: $value.widget
               children:
                 - $formkit: select
                   name: widget
@@ -588,14 +668,21 @@ spec:
                       value: 1
                       label: 链接列表-每行几个按钮
                       help: 为1显示为列表，2是每两个按钮放一行
-                    - $formkit: repeater
+                    - $formkit: array
                       name: items
                       label: 链接列表
+                      itemLabels:
+                        - type: iconify
+                          label: $value.icon
+                        - type: text
+                          label: $value.title
+                        - type: text
+                          label: $value.url
                       children:
-                        - $formkit: textarea
+                        - $formkit: iconify
                           name: icon
-                          label: 图标  
-                          help: 支持 svg/img 标签
+                          label: 图标
+                          format: svg # svg / dataurl / url / name
                           validation: required
                         - $formkit: text
                           name: title
@@ -605,10 +692,13 @@ spec:
                           name: url
                           label: 链接
                           validation: required
-            - $formkit: repeater
+            - $formkit: array
               name: rightbar
               id: rightbar
               label: 右侧栏
+              itemLabels:
+                - type: text
+                  label: $value.widget
               children:
                 - $formkit: select
                   name: widget
@@ -658,14 +748,21 @@ spec:
                       value: 1
                       label: 链接列表-每行几个按钮
                       help: 为1显示为列表，2是每两个按钮放一行
-                    - $formkit: repeater
+                    - $formkit: array
                       name: items
                       label: 链接列表
+                      itemLabels:
+                        - type: iconify
+                          label: $value.icon
+                        - type: text
+                          label: $value.title
+                        - type: text
+                          label: $value.url
                       children:
-                        - $formkit: textarea
+                        - $formkit: iconify
                           name: icon
-                          label: 图标  
-                          help: 支持 svg/img 标签
+                          label: 图标
+                          format: svg # svg / dataurl / url / name
                           validation: required
                         - $formkit: text
                           name: title
@@ -684,10 +781,13 @@ spec:
             rightbar: 
               - widget: toc
           children:
-            - $formkit: repeater
+            - $formkit: array
               name: leftbar
               id: leftbar
               label: 左侧栏
+              itemLabels:
+                - type: text
+                  label: $value.widget
               children:
                 - $formkit: select
                   name: widget
@@ -731,14 +831,21 @@ spec:
                       value: 1
                       label: 链接列表-每行几个按钮
                       help: 为1显示为列表，2是每两个按钮放一行
-                    - $formkit: repeater
+                    - $formkit: array
                       name: items
                       label: 链接列表
+                      itemLabels:
+                        - type: iconify
+                          label: $value.icon
+                        - type: text
+                          label: $value.title
+                        - type: text
+                          label: $value.url
                       children:
-                        - $formkit: textarea
+                        - $formkit: iconify
                           name: icon
-                          label: 图标  
-                          help: 支持 svg/img 标签
+                          label: 图标
+                          format: svg # svg / dataurl / url / name
                           validation: required
                         - $formkit: text
                           name: title
@@ -748,10 +855,13 @@ spec:
                           name: url
                           label: 链接
                           validation: required
-            - $formkit: repeater
+            - $formkit: array
               name: rightbar
               id: rightbar
               label: 右侧栏
+              itemLabels:
+                - type: text
+                  label: $value.widget
               children:
                 - $formkit: select
                   name: widget
@@ -797,14 +907,21 @@ spec:
                       value: 1
                       label: 链接列表-每行几个按钮
                       help: 为1显示为列表，2是每两个按钮放一行
-                    - $formkit: repeater
+                    - $formkit: array
                       name: items
                       label: 链接列表
+                      itemLabels:
+                        - type: iconify
+                          label: $value.icon
+                        - type: text
+                          label: $value.title
+                        - type: text
+                          label: $value.url
                       children:
-                        - $formkit: textarea
+                        - $formkit: iconify
                           name: icon
-                          label: 图标  
-                          help: 支持 svg/img 标签
+                          label: 图标
+                          format: svg # svg / dataurl / url / name
                           validation: required
                         - $formkit: text
                           name: title
@@ -823,10 +940,13 @@ spec:
             rightbar: 
               - widget: toc
           children:
-            - $formkit: repeater
+            - $formkit: array
               name: leftbar
               id: leftbar
               label: 左侧栏
+              itemLabels:
+                - type: text
+                  label: $value.widget
               children:
                 - $formkit: select
                   name: widget
@@ -870,14 +990,21 @@ spec:
                       value: 1
                       label: 链接列表-每行几个按钮
                       help: 为1显示为列表，2是每两个按钮放一行
-                    - $formkit: repeater
+                    - $formkit: array
                       name: items
                       label: 链接列表
+                      itemLabels:
+                        - type: iconify
+                          label: $value.icon
+                        - type: text
+                          label: $value.title
+                        - type: text
+                          label: $value.url
                       children:
-                        - $formkit: textarea
+                        - $formkit: iconify
                           name: icon
-                          label: 图标  
-                          help: 支持 svg/img 标签
+                          label: 图标
+                          format: svg # svg / dataurl / url / name
                           validation: required
                         - $formkit: text
                           name: title
@@ -887,10 +1014,13 @@ spec:
                           name: url
                           label: 链接
                           validation: required
-            - $formkit: repeater
+            - $formkit: array
               name: rightbar
               id: rightbar
               label: 右侧栏
+              itemLabels:
+                - type: text
+                  label: $value.widget
               children:
                 - $formkit: select
                   name: widget
@@ -934,14 +1064,21 @@ spec:
                       value: 1
                       label: 链接列表-每行几个按钮
                       help: 为1显示为列表，2是每两个按钮放一行
-                    - $formkit: repeater
+                    - $formkit: array
                       name: items
                       label: 链接列表
+                      itemLabels:
+                        - type: iconify
+                          label: $value.icon
+                        - type: text
+                          label: $value.title
+                        - type: text
+                          label: $value.url
                       children:
-                        - $formkit: textarea
+                        - $formkit: iconify
                           name: icon
-                          label: 图标  
-                          help: 支持 svg/img 标签
+                          label: 图标
+                          format: svg # svg / dataurl / url / name
                           validation: required
                         - $formkit: text
                           name: title
@@ -959,10 +1096,13 @@ spec:
               - widget: recent_post
             rightbar:  []
           children:
-            - $formkit: repeater
+            - $formkit: array
               name: leftbar
               id: leftbar
               label: 左侧栏
+              itemLabels:
+                - type: text
+                  label: $value.widget
               children:
                 - $formkit: select
                   name: widget
@@ -1006,14 +1146,21 @@ spec:
                       value: 1
                       label: 链接列表-每行几个按钮
                       help: 为1显示为列表，2是每两个按钮放一行
-                    - $formkit: repeater
+                    - $formkit: array
                       name: items
                       label: 链接列表
+                      itemLabels:
+                        - type: iconify
+                          label: $value.icon
+                        - type: text
+                          label: $value.title
+                        - type: text
+                          label: $value.url
                       children:
-                        - $formkit: textarea
+                        - $formkit: iconify
                           name: icon
-                          label: 图标  
-                          help: 支持 svg/img 标签
+                          label: 图标
+                          format: svg # svg / dataurl / url / name
                           validation: required
                         - $formkit: text
                           name: title
@@ -1023,10 +1170,13 @@ spec:
                           name: url
                           label: 链接
                           validation: required
-            - $formkit: repeater
+            - $formkit: array
               name: rightbar
               id: rightbar
               label: 右侧栏
+              itemLabels:
+                - type: text
+                  label: $value.widget
               children:
                 - $formkit: select
                   name: widget
@@ -1070,14 +1220,21 @@ spec:
                       value: 1
                       label: 链接列表-每行几个按钮
                       help: 为1显示为列表，2是每两个按钮放一行
-                    - $formkit: repeater
+                    - $formkit: array
                       name: items
                       label: 链接列表
+                      itemLabels:
+                        - type: iconify
+                          label: $value.icon
+                        - type: text
+                          label: $value.title
+                        - type: text
+                          label: $value.url
                       children:
-                        - $formkit: textarea
+                        - $formkit: iconify
                           name: icon
-                          label: 图标  
-                          help: 支持 svg/img 标签
+                          label: 图标
+                          format: svg # svg / dataurl / url / name
                           validation: required
                         - $formkit: text
                           name: title
@@ -1095,10 +1252,13 @@ spec:
               - widget: recent_post
             rightbar: []
           children:
-            - $formkit: repeater
+            - $formkit: array
               name: leftbar
               id: leftbar
               label: 左侧栏
+              itemLabels:
+                - type: text
+                  label: $value.widget
               children:
                 - $formkit: select
                   name: widget
@@ -1142,14 +1302,21 @@ spec:
                       value: 1
                       label: 链接列表-每行几个按钮
                       help: 为1显示为列表，2是每两个按钮放一行
-                    - $formkit: repeater
+                    - $formkit: array
                       name: items
                       label: 链接列表
+                      itemLabels:
+                        - type: iconify
+                          label: $value.icon
+                        - type: text
+                          label: $value.title
+                        - type: text
+                          label: $value.url
                       children:
-                        - $formkit: textarea
+                        - $formkit: iconify
                           name: icon
-                          label: 图标  
-                          help: 支持 svg/img 标签
+                          label: 图标
+                          format: svg # svg / dataurl / url / name
                           validation: required
                         - $formkit: text
                           name: title
@@ -1159,10 +1326,13 @@ spec:
                           name: url
                           label: 链接
                           validation: required
-            - $formkit: repeater
+            - $formkit: array
               name: rightbar
               id: rightbar
               label: 右侧栏
+              itemLabels:
+                - type: text
+                  label: $value.widget
               children:
                 - $formkit: select
                   name: widget
@@ -1206,14 +1376,21 @@ spec:
                       value: 1
                       label: 链接列表-每行几个按钮
                       help: 为1显示为列表，2是每两个按钮放一行
-                    - $formkit: repeater
+                    - $formkit: array
                       name: items
                       label: 链接列表
+                      itemLabels:
+                        - type: iconify
+                          label: $value.icon
+                        - type: text
+                          label: $value.title
+                        - type: text
+                          label: $value.url
                       children:
-                        - $formkit: textarea
+                        - $formkit: iconify
                           name: icon
-                          label: 图标  
-                          help: 支持 svg/img 标签
+                          label: 图标
+                          format: svg # svg / dataurl / url / name
                           validation: required
                         - $formkit: text
                           name: title
@@ -1232,10 +1409,13 @@ spec:
             rightbar: 
               - widget: toc
           children:
-            - $formkit: repeater
+            - $formkit: array
               name: leftbar
               id: leftbar
               label: 左侧栏
+              itemLabels:
+                - type: text
+                  label: $value.widget
               children:
                 - $formkit: select
                   name: widget
@@ -1281,14 +1461,21 @@ spec:
                       value: 1
                       label: 链接列表-每行几个按钮
                       help: 为1显示为列表，2是每两个按钮放一行
-                    - $formkit: repeater
+                    - $formkit: array
                       name: items
                       label: 链接列表
+                      itemLabels:
+                        - type: iconify
+                          label: $value.icon
+                        - type: text
+                          label: $value.title
+                        - type: text
+                          label: $value.url
                       children:
-                        - $formkit: textarea
+                        - $formkit: iconify
                           name: icon
-                          label: 图标  
-                          help: 支持 svg/img 标签
+                          label: 图标
+                          format: svg # svg / dataurl / url / name
                           validation: required
                         - $formkit: text
                           name: title
@@ -1298,10 +1485,13 @@ spec:
                           name: url
                           label: 链接
                           validation: required
-            - $formkit: repeater
+            - $formkit: array
               name: rightbar
               id: rightbar
               label: 右侧栏
+              itemLabels:
+                - type: text
+                  label: $value.widget
               children:
                 - $formkit: select
                   name: widget
@@ -1349,14 +1539,21 @@ spec:
                       value: 1
                       label: 链接列表-每行几个按钮
                       help: 为1显示为列表，2是每两个按钮放一行
-                    - $formkit: repeater
+                    - $formkit: array
                       name: items
                       label: 链接列表
+                      itemLabels:
+                        - type: iconify
+                          label: $value.icon
+                        - type: text
+                          label: $value.title
+                        - type: text
+                          label: $value.url
                       children:
-                        - $formkit: textarea
+                        - $formkit: iconify
                           name: icon
-                          label: 图标  
-                          help: 支持 svg/img 标签
+                          label: 图标
+                          format: svg # svg / dataurl / url / name
                           validation: required
                         - $formkit: text
                           name: title
@@ -1381,7 +1578,7 @@ spec:
               value: light
             - label: 深色
               value: dark
-        - $formkit: checkbox
+        - $formkit: switch
           name: smooth_scroll
           label: smooth_scroll
           help: 开启时如果目录过长可能无法准确定位
@@ -1511,6 +1708,8 @@ spec:
             - $formkit: attachment
               name: background
               label: background
+              width: "15rem"
+              aspectRatio: "16/9"
               accepts:
                 - "image/*"
         - $formkit: group
@@ -1524,7 +1723,7 @@ spec:
             blur_px: 100px
             blur_bg: var(--alpha60)
           children:
-            - $formkit: checkbox
+            - $formkit: switch
               name: enable
               id: leftbar_enable
               label: 开启
@@ -1537,6 +1736,8 @@ spec:
               if: $get(leftbar_enable).value
               name: background_image
               label: 图片
+              width: "15rem"
+              aspectRatio: "16/9"
               accepts:
                 - "image/*"
             - $formkit: text
@@ -1550,6 +1751,8 @@ spec:
         - $formkit: attachment
           name: error_page
           label: 404页面
+          width: "15rem"
+          aspectRatio: "16/9"
           value: https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/404/1c830bfcd517d.svg
           accepts:
             - "image/*"
@@ -1572,9 +1775,16 @@ spec:
     - group: footer
       label: 页脚
       formSchema:
-        - $formkit: repeater
+        - $formkit: array
           name: social
           label: 社交媒体
+          itemLabels:
+            - type: iconify
+              label: $value.icon
+            - type: text
+              label: $value.title
+            - type: text
+              label: $value.url
           value: 
             - icon: <img src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/08a41b181ce68.svg"/>
               title: "github"
@@ -1589,10 +1799,10 @@ spec:
               title: "comments"
               url: "/"
           children:
-            - $formkit: textarea
+            - $formkit: iconify
               name: icon
-              label: 图标  
-              help: 支持 svg/img 标签
+              label: 图标
+              format: svg # svg / dataurl / url / name
               validation: required
             - $formkit: text
               name: title
@@ -1633,7 +1843,7 @@ spec:
               value: tech
             - label: 图文类文章，文字和段落间增距大
               value: story
-        - $formkit: checkbox
+        - $formkit: switch
           name: indent
           label: 缩进两个文字宽度
         - $formkit: number
@@ -1668,7 +1878,7 @@ spec:
             enable: false
             max_count: 5
           children:
-            - $formkit: checkbox
+            - $formkit: switch
               name: enable
               id: related_posts_enable
               label: 开启
@@ -1690,7 +1900,7 @@ spec:
             - $formkit: text
               name: username
               label: 您的github登录用户名
-            - $formkit: checkbox
+            - $formkit: switch
               name: avatar
               label: 显示头像
         - $formkit: group
@@ -1727,14 +1937,21 @@ spec:
               name: columns
               label: 每行几个按钮
               help: 为1显示为列表，2是每两个按钮放一行
-            - $formkit: repeater
+            - $formkit: array
               name: items
               label: 链接
+              itemLabels:
+                - type: iconify
+                  label: $value.icon
+                - type: text
+                  label: $value.title
+                - type: text
+                  label: $value.url
               children:
-                - $formkit: textarea
+                - $formkit: iconify
                   name: icon
-                  label: 图标  
-                  help: 支持 svg/img 标签
+                  label: 图标
+                  format: svg # svg / dataurl / url / name
                   validation: required
                 - $formkit: text
                   name: title
@@ -1768,7 +1985,7 @@ spec:
             - $formkit: number
               name: amount
               label: 数量
-            - $formkit: checkbox
+            - $formkit: switch
               name: color
               label: 使用颜色
             - $formkit: color
@@ -1785,13 +2002,13 @@ spec:
             expand_active: true
             show_tagcon: true
           children:
-            - $formkit: checkbox
+            - $formkit: switch
               name: expand_all
               label: 展开所有节点
-            - $formkit: checkbox
+            - $formkit: switch
               name: expand_active
               label: 展开当前节点
-            - $formkit: checkbox
+            - $formkit: switch
               name: show_tagcon
               label: 显示标签 icon
         
@@ -1845,35 +2062,43 @@ spec:
           name: link
           label: 链接
           value: /themes/theme-stellar/assets/img/8f277b4ee0ecd.svg
+          width: "15rem"
+          aspectRatio: "16/9"
           accepts:
             - "image/*"
         - $formkit: attachment
           name: cover
           label: 封面
           value: /themes/theme-stellar/assets/img/76b86c0226ffd.svg
+          width: "15rem"
+          aspectRatio: "16/9"
           accepts:
             - "image/*"
         - $formkit: attachment
           name: banner
           label: 横幅
           value: /themes/theme-stellar/assets/img/books.jpg
+          width: "15rem"
+          aspectRatio: "16/9"
           accepts:
             - "image/*"
         - $formkit: attachment
           name: topic
           label: 专题
           value: /themes/theme-stellar/assets/img/10433048.png
+          width: "15rem"
+          aspectRatio: "16/9"
           accepts:
             - "image/*"
     
     - group: plugins
       label: 扩展插件
       formSchema:
-        - $formkit: checkbox
+        - $formkit: switch
           name: preload
           label: 预先加载页面
           value: true
-        - $formkit: checkbox
+        - $formkit: switch
           name: swiper
           label: 轮播图
           value: true

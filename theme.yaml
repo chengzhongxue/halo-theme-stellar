@@ -29,8 +29,8 @@ spec:
   issues: "https://github.com/chengzhongxue/halo-theme-stellar/issues"
   settingName: "theme-stellar-setting"
   configMapName: "theme-stellar-configMap"
-  version: "1.0.2"
-  requires: ">=2.20.0"
+  version: "1.1.0"
+  requires: ">=2.22.1"
   license:
     - name: "MIT license"
       url: "https://github.com/chengzhongxue/halo-theme-stellar/blob/main/LICENSE"

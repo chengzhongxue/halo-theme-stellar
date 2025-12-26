@@ -1,10 +1,7 @@
 <div class="article-footer fs14" th:with="permalink = ${site.url+post.status.permalink}">
-    <section id="license">
+    <section id="license" th:if="${not #strings.isEmpty(theme.config.article.license)}">
         <div class="header"><span>[[#{meta.license}]]</span></div>
-        <div class="body" 
-        th:if="${not #strings.isEmpty(theme.config.article.license)}" 
-        th:utext="${theme.config.article.license}">
-        </div>
+        <div class="body" th:utext="${theme.config.article.license}"></div>
     </section>
     <section id="share">
         <div class="header"><span>[[#{meta.share}]]</span></div>
