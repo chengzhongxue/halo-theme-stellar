@@ -7,7 +7,7 @@
             th:style="items.size() == 1 ? 'grid-template-columns:repeat(1,1fr);' : 'grid-template-columns:repeat([(${columns})],1fr);'">
             <a th:each="item : ${items}" class="link" th:title="${item.title}" th:href="${item.url}">
                 <div class="flex">
-                    <th:block th:if="${not #strings.isEmpty(item.icon)}" th:utext="${item.icon}"></th:block>
+                    <th:block th:if="${not #strings.isEmpty(item.icon.value)}" th:utext="${item.icon.value}"></th:block>
                     <span th:if="${columns <= 2}" th:text="${item.title}"></span>
                 </div>
             </a>

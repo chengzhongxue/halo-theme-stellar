@@ -1,7 +1,7 @@
 apiVersion: v1alpha1
 kind: AnnotationSetting
 metadata:
-  generateName: annotation-setting-
+  name: annotation-setting-stellar-post
 spec:
   targetRef:
     group: content.halo.run
@@ -40,7 +40,7 @@ spec:
 apiVersion: v1alpha1
 kind: AnnotationSetting
 metadata:
-  generateName: annotation-setting-
+  name: annotation-setting-stellar-single-page
 spec:
   targetRef:
     group: content.halo.run

@@ -1,8 +1,8 @@
 <nav th:fragment="menu(where)" th:class="|menu dis-select${where == 'main' ? ' mobile-hidden' : ''}|">
     <a th:each="item : ${theme.config.menubar.items}" 
       class="nav-item " th:title="${item.title}" th:href="${item.url}" th:style="|color:${item.theme}|">
-       <th:block th:if="${not #strings.isEmpty(item.icon)}"
-       th:utext="${item.icon}"></th:block>
-        <span th:unless="${not #strings.isEmpty(item.icon)}" th:text="${item.title}"></span>
+       <th:block th:if="${not #strings.isEmpty(item.icon.value)}"
+       th:utext="${item.icon.value}"></th:block>
+        <span th:unless="${not #strings.isEmpty(item.icon.value)}" th:text="${item.title}"></span>
     </a>
 </nav>

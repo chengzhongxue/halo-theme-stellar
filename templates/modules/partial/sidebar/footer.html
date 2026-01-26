@@ -7,7 +7,7 @@
          th:href="${social.url}" 
          th:target="${is_contain ? '_blank' : '_self'}" 
          th::rel="${ is_contain ? 'external nofollow noopener noreferrer' : 'noopener noreferrer'}">
-         <th:block th:if="${not #strings.isEmpty(social.icon)}" th:utext="${social.icon}"></th:block>
+         <th:block th:if="${not #strings.isEmpty(social.icon.value)}" th:utext="${social.icon.value}"></th:block>
         </a>
     </div>
 </footer>
