@@ -1778,11 +1778,15 @@ spec:
         - $formkit: text
           name: breadcrumb_text
           label: Breadcrumb Text
-          value: "\u53CB\u94FE"
+          value: "友链"
         - $formkit: text
           name: banner_title
           label: Banner Title
-          value: "\u5C0F\u4F19\u4F34\u4EEC"
+          value: "小伙伴们"
+        - $formkit: switch
+          name: comments_enable
+          label: Enable Comments
+          value: true
 
     - group: footer
       label: 页脚
