@@ -1771,7 +1771,19 @@ spec:
           name: comment_title
           label: 标题
           value: 快来参与讨论吧~
-      
+
+    - group: links_page
+      label: Links Page
+      formSchema:
+        - $formkit: text
+          name: breadcrumb_text
+          label: Breadcrumb Text
+          value: "\u53CB\u94FE"
+        - $formkit: text
+          name: banner_title
+          label: Banner Title
+          value: "\u5C0F\u4F19\u4F34\u4EEC"
+
     - group: footer
       label: 页脚
       formSchema:
