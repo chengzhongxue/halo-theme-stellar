@@ -1838,12 +1838,26 @@ spec:
           requestOption:
             labelField: 'spec.displayName'
             valueField: 'metadata.name'
+        - $formkit: text
+          name: copyright
+          label: 版权信息
+          value: "© 2023-2026 bi1kbu.com"
+        - $formkit: text
+          name: icp
+          label: ICP备案号
+          value: ""
+          help: 请填写完整备案文案，例如：京ICP备XXXXXXXXX号-1
+        - $formkit: text
+          name: public_security
+          label: 公安网备号
+          value: ""
+          help: 请填写完整备案文案，主题将原样展示并自动生成查询链接
         - $formkit: code
           name: content
           label: 自定义HTML代码-内容
           height: 200px
           language: html
-          value: <p>本站由 困困鱼 使用 <a target="_blank" href="https://github.com/chengzhongxue/halo-theme-stellar">Stellar</a> 创建。</p>
+          value: ""
 
 
     - group: article

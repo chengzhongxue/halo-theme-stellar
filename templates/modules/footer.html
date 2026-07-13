@@ -11,6 +11,24 @@
         </th:block>
     </div>
     <div class="text">
+      <p th:if="${not #strings.isEmpty(theme.config.footer.copyright)}"
+        th:text="${theme.config.footer.copyright}"></p>
+      <p th:if="${not #strings.isEmpty(theme.config.footer.icp) or not #strings.isEmpty(theme.config.footer.public_security)}">
+        <a th:if="${not #strings.isEmpty(theme.config.footer.icp)}"
+          href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer"
+          style="background: none !important;"
+          th:text="${theme.config.footer.icp}"></a>
+        <th:block th:if="${not #strings.isEmpty(theme.config.footer.public_security)}"
+          th:with="publicSecurityCode=${theme.config.footer.public_security.replaceAll('[^0-9-]', '')}">
+          <img th:src="@{/themes/theme-stellar/assets/img/beian-icon.png}"
+            src="/themes/theme-stellar/assets/img/beian-icon.png"
+            alt="公安备案图标"
+            style="width: 16px; height: 16px; margin: 0 0 4px 0; vertical-align: middle; display: inline;">
+          <a th:href="${'https://beian.mps.gov.cn/#/query/webSearch?code=' + publicSecurityCode}"
+            rel="noreferrer" target="_blank" style="background: none !important;"
+            th:text="${theme.config.footer.public_security}"></a>
+        </th:block>
+      </p>
       <th:block th:if="${not #strings.isEmpty(theme.config.footer.content)}"
         th:utext="${theme.config.footer.content}"> </th:block>      
     </div>
