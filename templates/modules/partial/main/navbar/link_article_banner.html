@@ -5,14 +5,15 @@
                 <div class="flex-row" id="breadcrumb">
                     <a class="cap breadcrumb" href="/">[[#{btn.home}]]</a>
                     <span class="sep"></span>
-                    <a class="cap breadcrumb" href="/links">友链</a>
+                    <a class="cap breadcrumb" href="/links"
+                       th:text="${#strings.isEmpty(theme.config.links_page.breadcrumb_text) ? '友链' : theme.config.links_page.breadcrumb_text}"></a>
                 </div>
             </div>
         </div>
         <div class="bottom">
             <div class="text-area">
                 <h1 class="text title">
-                    <span>小伙伴们</span>
+                    <span th:text="${#strings.isEmpty(theme.config.links_page.banner_title) ? '小伙伴们' : theme.config.links_page.banner_title}"></span>
                 </h1>
             </div>
         </div>

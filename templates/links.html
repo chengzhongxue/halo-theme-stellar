@@ -48,7 +48,8 @@
             </div>
         </th:block>
     </article>
-    <th:block th:with="name=${pluginName},kind='Plugin',group='plugin.halo.run'">
+    <th:block th:if="${theme.config.links_page.comments_enable == null || theme.config.links_page.comments_enable}"
+              th:with="name=${pluginName},kind='Plugin',group='plugin.halo.run'">
         <th:block th:replace="~{modules/partial/comments/default/layout}" />
     </th:block>
 
